@@ -23,13 +23,12 @@ public class PaintAppGUI extends JFrame {
     private JButton pickColorButton;
     private JSpinner lineWidthSpinner;
 
-    private final Canvas canvas;
     private final IOHandler ioHandler;
 
     public PaintAppGUI() {
-        canvas = new Canvas(drawPanel);
         ioHandler = new IOHandler(this);
         ToolbarListener toolbarListener = new ToolbarListener(this);
+
         JButton[] buttons = new JButton[] {
                 newFileButton, saveButton, openButton, undoButton, redoButton,
                 clearButton, penButton, lineButton, rectangleButton, circleButton,
@@ -38,6 +37,10 @@ public class PaintAppGUI extends JFrame {
         for (var btn : buttons)
             btn.addActionListener(toolbarListener);
         lineWidthSpinner.addChangeListener(toolbarListener);
+    }
+
+    private void createUIComponents() {
+        drawPanel = new Canvas(this);
     }
 
     public final JPanel getMainPanel() {
@@ -117,7 +120,7 @@ public class PaintAppGUI extends JFrame {
     }
 
     public Canvas getCanvas() {
-        return canvas;
+        return (Canvas)drawPanel;
     }
 
     public IOHandler getIoHandler() {

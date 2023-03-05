@@ -24,9 +24,11 @@ public class PaintAppGUI extends JFrame {
     private JSpinner lineWidthSpinner;
 
     private final Canvas canvas;
+    private final IOHandler ioHandler;
 
     public PaintAppGUI() {
         canvas = new Canvas(drawPanel);
+        ioHandler = new IOHandler(this);
         ToolbarListener toolbarListener = new ToolbarListener(this);
         JButton[] buttons = new JButton[] {
                 newFileButton, saveButton, openButton, undoButton, redoButton,
@@ -116,5 +118,9 @@ public class PaintAppGUI extends JFrame {
 
     public Canvas getCanvas() {
         return canvas;
+    }
+
+    public IOHandler getIoHandler() {
+        return ioHandler;
     }
 }

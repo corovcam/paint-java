@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a547b47e-37fb-46ce-b627-80b5ce0c9132" name="Changes" comment="Add base Canvas, IOHandler methods">
+    <list default="true" id="a547b47e-37fb-46ce-b627-80b5ce0c9132" name="Changes" comment="Add custom Canvas implementation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/Canvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/PaintAppGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/PaintAppGUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/PaintAppGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/PaintAppGUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +18,7 @@
       <list>
         <option value="Enum" />
         <option value="Class" />
+        <option value="Record" />
       </list>
     </option>
   </component>
@@ -37,18 +36,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "247",
-    "WebServerToolWindowFactoryState": "false",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.code.analysis.last.selected.profile": "pProject Default"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;247&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.corovcak.martin.java.paint" />
@@ -76,7 +75,9 @@
       <workItem from="1676041518497" duration="2798000" />
       <workItem from="1677008619612" duration="189000" />
       <workItem from="1677942758259" duration="6105000" />
-      <workItem from="1678025503308" duration="23104000" />
+      <workItem from="1678025503308" duration="23919000" />
+      <workItem from="1678120325607" duration="4580000" />
+      <workItem from="1678141018608" duration="2924000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1676042054468</created>
@@ -120,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678041558328</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Add custom Canvas implementation">
+      <created>1678050916373</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1678050916373</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,6 +150,7 @@
     <MESSAGE value="Add base GUI components using GUI Designer" />
     <MESSAGE value="Restructure GUI and add listeners and Canvas base classes" />
     <MESSAGE value="Add base Canvas, IOHandler methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add base Canvas, IOHandler methods" />
+    <MESSAGE value="Add custom Canvas implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add custom Canvas implementation" />
   </component>
 </project>

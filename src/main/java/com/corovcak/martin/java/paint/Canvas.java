@@ -1,13 +1,16 @@
 package com.corovcak.martin.java.paint;
 
 import javax.swing.*;
+import javax.swing.event.MouseInputListener;
 import java.awt.*;
 
 public class Canvas extends JPanel {
     private final PaintAppGUI guiFrame;
 
+    private Point point1, point2;
     private Graphics2D graphics;
     private Color color = Color.BLACK;
+    private Tools selectedTool = Tools.Pen;
     private Image image;
 
     @Override
@@ -24,10 +27,27 @@ public class Canvas extends JPanel {
     public Canvas(PaintAppGUI guiFrame) {
         this.guiFrame = guiFrame;
         setBackground(Color.WHITE);
+        setLayout(null);
+        setDoubleBuffered(true);
+        MouseInputListener mouseListener = new CustomMouseListener(this);
+        addMouseListener(mouseListener);
+        addMouseMotionListener(mouseListener);
+    }
+
+    public Tools getSelectedTool() {
+        return selectedTool;
+    }
+
+    public void setPoint1(Point point1) {
+        this.point1 = point1;
+    }
+
+    public void setPoint2(Point point2) {
+        this.point2 = point2;
     }
 
     public void setTool(Tools tool) {
-
+        selectedTool = tool;
     }
 
     public void pickColor() {
@@ -40,6 +60,14 @@ public class Canvas extends JPanel {
 
     public void setLineWidth(int lineWidth) {
         graphics.setStroke(new BasicStroke(lineWidth));
+    }
+
+    public void penDraw() {
+        if (graphics != null) {
+            graphics.drawLine(point1.x, point1.y, point2.x, point2.y);
+            repaint();
+            point1 = new Point(point2.x, point2.y);
+        }
     }
 
     public void undo() {

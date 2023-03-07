@@ -6,6 +6,8 @@ import com.corovcak.martin.java.paint.utils.Tools;
 import javax.swing.*;
 import javax.swing.event.MouseInputListener;
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 import java.util.Stack;
 
 public class Canvas extends JPanel {
@@ -35,7 +37,10 @@ public class Canvas extends JPanel {
             Shape s = previewStack.pop();
             graphics2D.setColor(color);
             graphics2D.setStroke(graphics.getStroke());
-            graphics2D.draw(s);
+            if (selectedTool == Tools.Line)
+                graphics2D.draw(s);
+            else
+                graphics2D.fill(s);
         }
     }
 
@@ -105,7 +110,37 @@ public class Canvas extends JPanel {
     }
 
     public void drawLine() {
-        graphics.drawLine(point1.x, point1.y, point2.x, point2.y);
+        graphics.draw(new LineSegment(point1, point2));
+        repaint();
+    }
+
+    public void previewRectangle() {
+        Rectangle2D minBoundingRect = (new LineSegment(point1, point2)).getBounds2D(); // MBR
+        previewStack.push(minBoundingRect);
+        repaint();
+    }
+
+    public void drawRectangle() {
+        Rectangle2D minBoundingRect = (new LineSegment(point1, point2)).getBounds2D(); // MBR
+        graphics.fill(minBoundingRect);
+        repaint();
+    }
+
+    public void previewEllipse(boolean isCircle) {
+        Rectangle2D MBR = (new LineSegment(point1, point2)).getBounds2D();
+        if (!isCircle)
+            previewStack.push(new Ellipse2D.Double(MBR.getMinX(), MBR.getMinY(), MBR.getWidth(), MBR.getHeight()));
+        else
+            previewStack.push(new Ellipse2D.Double(MBR.getMinX(), MBR.getMinY(), MBR.getWidth(), MBR.getWidth()));
+        repaint();
+    }
+
+    public void drawEllipse(boolean isCircle) {
+        Rectangle2D MBR = (new LineSegment(point1, point2)).getBounds2D();
+        if (!isCircle)
+            graphics.fill(new Ellipse2D.Double(MBR.getMinX(), MBR.getMinY(), MBR.getWidth(), MBR.getHeight()));
+        else
+            graphics.fill(new Ellipse2D.Double(MBR.getMinX(), MBR.getMinY(), MBR.getWidth(), MBR.getWidth()));
         repaint();
     }
 
@@ -122,6 +157,8 @@ public class Canvas extends JPanel {
         graphics.fillRect(0, 0, getSize().width, getSize().height);
         graphics.setPaint(Color.black);
         guiFrame.getColorPanel().setBackground(Color.black);
+        this.color = Color.BLACK;
+        previewStack.clear();
         repaint();
     }
 }

@@ -1,5 +1,7 @@
 package com.corovcak.martin.java.paint;
 
+import com.corovcak.martin.java.paint.utils.Tools;
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;

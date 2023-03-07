@@ -18,6 +18,9 @@ public class CustomMouseListener implements MouseInputListener {
             case Pen, Eraser -> {
                 canvas.penDraw();
             }
+            case Line -> {
+                canvas.previewLine();
+            }
             default -> {
 
             }
@@ -42,7 +45,14 @@ public class CustomMouseListener implements MouseInputListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
+        switch (canvas.getSelectedTool()) {
+            case Line -> {
+                canvas.drawLine();
+            }
+            default -> {
 
+            }
+        }
     }
 
     @Override

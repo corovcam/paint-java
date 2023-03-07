@@ -1,8 +1,12 @@
 package com.corovcak.martin.java.paint;
 
+import com.corovcak.martin.java.paint.utils.LineSegment;
+import com.corovcak.martin.java.paint.utils.Tools;
+
 import javax.swing.*;
 import javax.swing.event.MouseInputListener;
 import java.awt.*;
+import java.util.Stack;
 
 public class Canvas extends JPanel {
     private final PaintAppGUI guiFrame;
@@ -12,6 +16,7 @@ public class Canvas extends JPanel {
     private Color color = Color.BLACK;
     private Tools selectedTool = Tools.Pen;
     private Image image;
+    private final Stack<Shape> previewStack = new Stack<>();
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -23,6 +28,15 @@ public class Canvas extends JPanel {
             clear();
         }
         g.drawImage(image, 0, 0, null);
+
+        Graphics2D graphics2D = (Graphics2D) g;
+        graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        if (!previewStack.isEmpty()) {
+            Shape s = previewStack.pop();
+            graphics2D.setColor(color);
+            graphics2D.setStroke(graphics.getStroke());
+            graphics2D.draw(s);
+        }
     }
 
     public Canvas(PaintAppGUI guiFrame) {
@@ -67,6 +81,8 @@ public class Canvas extends JPanel {
         color = JColorChooser.showDialog(guiFrame, "Choose painting color.", color);
         if (color == null)
             color = Color.BLACK;
+        if (selectedTool == Tools.Eraser)
+            guiFrame.getPenButton().doClick();
         graphics.setPaint(color);
         guiFrame.getColorPanel().setBackground(color);
     }
@@ -81,6 +97,16 @@ public class Canvas extends JPanel {
             repaint();
             point1 = new Point(point2.x, point2.y);
         }
+    }
+
+    public void previewLine() {
+        previewStack.push(new LineSegment(point1, point2));
+        repaint();
+    }
+
+    public void drawLine() {
+        graphics.drawLine(point1.x, point1.y, point2.x, point2.y);
+        repaint();
     }
 
     public void undo() {

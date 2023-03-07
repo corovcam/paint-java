@@ -15,7 +15,7 @@ public class CustomMouseListener implements MouseInputListener {
         System.out.println(e.getPoint());
         canvas.setPoint2(e.getPoint());
         switch (canvas.getSelectedTool()) {
-            case Pen -> {
+            case Pen, Eraser -> {
                 canvas.penDraw();
             }
             default -> {

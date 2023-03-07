@@ -5,6 +5,10 @@ import java.awt.*;
 
 public class PaintApp {
     public static void main(String[] args) {
+        SwingUtilities.invokeLater(PaintApp::showGUI);
+    }
+
+    private static void showGUI() {
         PaintAppGUI frame = new PaintAppGUI();
         frame.setContentPane(frame.getMainPanel());
         frame.setTitle("Paint App");

@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a547b47e-37fb-46ce-b627-80b5ce0c9132" name="Changes" comment="Add custom Canvas implementation">
+    <list default="true" id="a547b47e-37fb-46ce-b627-80b5ce0c9132" name="Changes" comment="Add MouseListener implementation to Canvas - for Pen tool">
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/Canvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/CustomMouseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/CustomMouseListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/PaintApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/PaintApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/PaintAppGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/PaintAppGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/PaintAppGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/PaintAppGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/ToolbarListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/ToolbarListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +83,8 @@
       <workItem from="1677942758259" duration="6105000" />
       <workItem from="1678025503308" duration="23919000" />
       <workItem from="1678120325607" duration="4580000" />
-      <workItem from="1678141018608" duration="2924000" />
+      <workItem from="1678141018608" duration="4039000" />
+      <workItem from="1678202293743" duration="4316000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1676042054468</created>
@@ -128,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678050916373</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add MouseListener implementation to Canvas - for Pen tool">
+      <created>1678144034046</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1678144034046</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,6 +165,7 @@
     <MESSAGE value="Restructure GUI and add listeners and Canvas base classes" />
     <MESSAGE value="Add base Canvas, IOHandler methods" />
     <MESSAGE value="Add custom Canvas implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add custom Canvas implementation" />
+    <MESSAGE value="Add MouseListener implementation to Canvas - for Pen tool" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add MouseListener implementation to Canvas - for Pen tool" />
   </component>
 </project>

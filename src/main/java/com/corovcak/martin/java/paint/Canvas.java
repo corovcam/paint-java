@@ -19,6 +19,7 @@ public class Canvas extends JPanel {
             image = createImage(getSize().width, getSize().height);
             graphics = (Graphics2D)image.getGraphics();
             graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            setLineWidth(1);
             clear();
         }
         g.drawImage(image, 0, 0, null);
@@ -48,6 +49,18 @@ public class Canvas extends JPanel {
 
     public void setTool(Tools tool) {
         selectedTool = tool;
+        switch (tool) {
+            case Eraser -> {
+                setColor(Color.WHITE);
+            }
+            default -> {}
+        }
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+        graphics.setPaint(color);
+        guiFrame.getColorPanel().setBackground(color);
     }
 
     public void pickColor() {
@@ -59,7 +72,7 @@ public class Canvas extends JPanel {
     }
 
     public void setLineWidth(int lineWidth) {
-        graphics.setStroke(new BasicStroke(lineWidth));
+        graphics.setStroke(new BasicStroke(lineWidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
     }
 
     public void penDraw() {

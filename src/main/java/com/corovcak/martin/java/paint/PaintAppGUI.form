@@ -10,7 +10,7 @@
       <font name="Segoe UI Black" size="12" style="0"/>
     </border>
     <children>
-      <component id="216ce" class="javax.swing.JButton" binding="lineButton">
+      <component id="bd92a" class="javax.swing.JToggleButton" binding="lineButton">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -18,7 +18,7 @@
           <text value="Line"/>
         </properties>
       </component>
-      <component id="34455" class="javax.swing.JButton" binding="rectangleButton">
+      <component id="34a25" class="javax.swing.JToggleButton" binding="rectangleButton">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -26,7 +26,7 @@
           <text value="Rectangle"/>
         </properties>
       </component>
-      <component id="bb074" class="javax.swing.JButton" binding="circleButton">
+      <component id="14812" class="javax.swing.JToggleButton" binding="circleButton">
         <constraints>
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -34,7 +34,7 @@
           <text value="Circle"/>
         </properties>
       </component>
-      <component id="9dda8" class="javax.swing.JButton" binding="ellipseButton">
+      <component id="326d5" class="javax.swing.JToggleButton" binding="ellipseButton">
         <constraints>
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -42,7 +42,7 @@
           <text value="Ellipse"/>
         </properties>
       </component>
-      <component id="74bd8" class="javax.swing.JButton" binding="polygonButton">
+      <component id="7d141" class="javax.swing.JToggleButton" binding="polygonButton">
         <constraints>
           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -50,7 +50,7 @@
           <text value="Polygon"/>
         </properties>
       </component>
-      <component id="506f9" class="javax.swing.JButton" binding="textButton" default-binding="true">
+      <component id="abb70" class="javax.swing.JToggleButton" binding="textButton">
         <constraints>
           <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -58,7 +58,7 @@
           <text value="Text"/>
         </properties>
       </component>
-      <component id="e0ea5" class="javax.swing.JButton" binding="eraserButton" default-binding="true">
+      <component id="c43f3" class="javax.swing.JToggleButton" binding="eraserButton">
         <constraints>
           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -90,7 +90,7 @@
         <border type="none"/>
         <children/>
       </grid>
-      <component id="a4e3b" class="javax.swing.JButton" binding="penButton">
+      <component id="dd57" class="javax.swing.JToggleButton" binding="penButton">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -186,7 +186,7 @@
           </grid>
         </constraints>
       </hspacer>
-      <component id="1ca52" class="javax.swing.JSpinner" binding="lineWidthSpinner">
+      <component id="1ca52" class="javax.swing.JSpinner" binding="lineWidthSpinner" custom-create="true">
         <constraints>
           <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>

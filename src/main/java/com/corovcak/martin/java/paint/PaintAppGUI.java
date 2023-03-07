@@ -12,16 +12,17 @@ public class PaintAppGUI extends JFrame {
     private JButton undoButton;
     private JButton redoButton;
     private JButton clearButton;
-    private JButton penButton;
-    private JButton lineButton;
-    private JButton rectangleButton;
-    private JButton circleButton;
-    private JButton ellipseButton;
-    private JButton polygonButton;
-    private JButton textButton;
-    private JButton eraserButton;
+    private JToggleButton penButton;
+    private JToggleButton lineButton;
+    private JToggleButton rectangleButton;
+    private JToggleButton circleButton;
+    private JToggleButton ellipseButton;
+    private JToggleButton polygonButton;
+    private JToggleButton textButton;
+    private JToggleButton eraserButton;
     private JButton pickColorButton;
     private JSpinner lineWidthSpinner;
+    private ButtonGroup buttonGroup;
 
     private final IOHandler ioHandler;
 
@@ -30,45 +31,70 @@ public class PaintAppGUI extends JFrame {
         ToolbarListener toolbarListener = new ToolbarListener(this);
 
         JButton[] buttons = new JButton[] {
-                newFileButton, saveButton, openButton, undoButton, redoButton,
-                clearButton, penButton, lineButton, rectangleButton, circleButton,
-                ellipseButton, polygonButton, textButton, eraserButton, pickColorButton
+                newFileButton, saveButton, openButton, undoButton,
+                redoButton, clearButton, pickColorButton
+        };
+        JToggleButton[] toggleButtons = new JToggleButton[] {
+                penButton, lineButton, rectangleButton, circleButton,
+                ellipseButton, polygonButton, textButton, eraserButton
         };
         for (var btn : buttons)
             btn.addActionListener(toolbarListener);
+        for (var btn : toggleButtons) {
+            btn.addActionListener(toolbarListener);
+            buttonGroup.add(btn);
+        }
         lineWidthSpinner.addChangeListener(toolbarListener);
     }
 
     private void createUIComponents() {
         drawPanel = new Canvas(this);
+        lineWidthSpinner = new JSpinner(new SpinnerNumberModel(1, 1, Integer.MAX_VALUE, 1));
+        buttonGroup = new ButtonGroup();
     }
 
     public final JPanel getMainPanel() {
         return mainPanel;
     }
 
-    public JButton getClearButton() {
-        return clearButton;
+    public JPanel getDrawPanel() {
+        return drawPanel;
     }
 
-    public JButton getPenButton() {
+    public AbstractButton getPenButton() {
         return penButton;
     }
 
-    public JButton getLineButton() {
+    public AbstractButton getLineButton() {
         return lineButton;
     }
 
-    public JButton getCircleButton() {
+    public AbstractButton getCircleButton() {
         return circleButton;
     }
 
-    public JButton getEllipseButton() {
+    public AbstractButton getEllipseButton() {
         return ellipseButton;
     }
 
-    public JButton getPolygonButton() {
+    public AbstractButton getPolygonButton() {
         return polygonButton;
+    }
+
+    public AbstractButton getRectangleButton() {
+        return rectangleButton;
+    }
+
+    public AbstractButton getTextButton() {
+        return textButton;
+    }
+
+    public AbstractButton getEraserButton() {
+        return eraserButton;
+    }
+
+    public JButton getClearButton() {
+        return clearButton;
     }
 
     public JButton getUndoButton() {
@@ -77,14 +103,6 @@ public class PaintAppGUI extends JFrame {
 
     public JButton getRedoButton() {
         return redoButton;
-    }
-
-    public JPanel getDrawPanel() {
-        return drawPanel;
-    }
-
-    public JButton getEraserButton() {
-        return eraserButton;
     }
 
     public JButton getSaveButton() {
@@ -105,14 +123,6 @@ public class PaintAppGUI extends JFrame {
 
     public JButton getOpenButton() {
         return openButton;
-    }
-
-    public JButton getRectangleButton() {
-        return rectangleButton;
-    }
-
-    public JButton getTextButton() {
-        return textButton;
     }
 
     public JSpinner getLineWidthSpinner() {

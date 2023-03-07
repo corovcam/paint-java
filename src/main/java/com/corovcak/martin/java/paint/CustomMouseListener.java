@@ -13,6 +13,7 @@ public class CustomMouseListener implements MouseInputListener {
     @Override
     public void mousePressed(MouseEvent e) {
         System.out.println(e.getPoint());
+        canvas.saveCurrentImageToStack();
         canvas.setPoint1(e.getPoint());
     }
 

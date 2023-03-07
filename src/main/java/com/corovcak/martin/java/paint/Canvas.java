@@ -8,6 +8,7 @@ import javax.swing.event.MouseInputListener;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
 import java.util.Stack;
 
 public class Canvas extends JPanel {
@@ -19,6 +20,8 @@ public class Canvas extends JPanel {
     private Tools selectedTool = Tools.Pen;
     private Image image;
     private final Stack<Shape> previewStack = new Stack<>();
+    private final Stack<Image> undoStack = new Stack<>();
+    private final Stack<Image> redoStack = new Stack<>();
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -97,11 +100,9 @@ public class Canvas extends JPanel {
     }
 
     public void penDraw() {
-        if (graphics != null) {
-            graphics.drawLine(point1.x, point1.y, point2.x, point2.y);
-            repaint();
-            point1 = new Point(point2.x, point2.y);
-        }
+        graphics.drawLine(point1.x, point1.y, point2.x, point2.y);
+        repaint();
+        point1 = new Point(point2.x, point2.y);
     }
 
     public void previewLine() {
@@ -112,6 +113,7 @@ public class Canvas extends JPanel {
     public void drawLine() {
         graphics.draw(new LineSegment(point1, point2));
         repaint();
+        point2 = new Point(point1.x, point1.y);
     }
 
     public void previewRectangle() {
@@ -124,6 +126,7 @@ public class Canvas extends JPanel {
         Rectangle2D minBoundingRect = (new LineSegment(point1, point2)).getBounds2D(); // MBR
         graphics.fill(minBoundingRect);
         repaint();
+        point2 = new Point(point1.x, point1.y);
     }
 
     public void previewEllipse(boolean isCircle) {
@@ -142,14 +145,23 @@ public class Canvas extends JPanel {
         else
             graphics.fill(new Ellipse2D.Double(MBR.getMinX(), MBR.getMinY(), MBR.getWidth(), MBR.getWidth()));
         repaint();
+        point2 = new Point(point1.x, point1.y);
     }
 
     public void undo() {
-
+        if (!undoStack.isEmpty()) {
+            Image temp = undoStack.pop();
+            redoStack.push(image);
+            setNewImage(temp);
+        }
     }
 
     public void redo() {
-
+        if (!redoStack.isEmpty()) {
+            Image temp = redoStack.pop();
+            undoStack.push(image);
+            setNewImage(temp);
+        }
     }
 
     public void clear() {
@@ -157,8 +169,33 @@ public class Canvas extends JPanel {
         graphics.fillRect(0, 0, getSize().width, getSize().height);
         graphics.setPaint(Color.black);
         guiFrame.getColorPanel().setBackground(Color.black);
+        guiFrame.getPenButton().doClick();
         this.color = Color.BLACK;
         previewStack.clear();
         repaint();
+    }
+
+    private void setNewImage(Image img) {
+        this.image = img;
+        graphics = (Graphics2D)image.getGraphics();
+        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        graphics.setPaint(Color.black);
+        repaint();
+    }
+
+    /*public void setBackground(Image img) {
+        background = copyImage(img);
+        setImage(copyImage(img));
+    }*/
+
+    private BufferedImage copyImage(Image img) {
+        BufferedImage imageCopy = new BufferedImage(getSize().width, getSize().height, BufferedImage.TYPE_INT_RGB);
+        Graphics g = imageCopy.createGraphics();
+        g.drawImage(img, 0, 0, getWidth(), getHeight(), null);
+        return imageCopy;
+    }
+
+    public void saveCurrentImageToStack() {
+        undoStack.push(copyImage(image));
     }
 }

@@ -38,6 +38,7 @@ public class PaintAppGUI extends JFrame {
                 penButton, lineButton, rectangleButton, circleButton,
                 ellipseButton, polygonButton, textButton, eraserButton
         };
+        penButton.doClick();
         for (var btn : buttons)
             btn.addActionListener(toolbarListener);
         for (var btn : toggleButtons) {

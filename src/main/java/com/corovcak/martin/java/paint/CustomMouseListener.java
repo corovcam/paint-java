@@ -1,5 +1,7 @@
 package com.corovcak.martin.java.paint;
 
+import com.corovcak.martin.java.paint.utils.Tools;
+
 import javax.swing.event.MouseInputListener;
 import java.awt.event.MouseEvent;
 
@@ -15,6 +17,9 @@ public class CustomMouseListener implements MouseInputListener {
         System.out.println(e.getPoint());
         canvas.saveCurrentImageToStack();
         canvas.setPoint1(e.getPoint());
+        if (canvas.getSelectedTool() == Tools.Text) {
+            canvas.createText();
+        }
     }
 
     @Override

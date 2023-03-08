@@ -2,6 +2,7 @@ package com.corovcak.martin.java.paint;
 
 import com.corovcak.martin.java.paint.utils.LineSegment;
 import com.corovcak.martin.java.paint.utils.Tools;
+import org.drjekyll.fontchooser.FontDialog;
 
 import javax.swing.*;
 import javax.swing.event.MouseInputListener;
@@ -99,6 +100,15 @@ public class Canvas extends JPanel {
         graphics.setStroke(new BasicStroke(lineWidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
     }
 
+    public void pickFont() {
+        FontDialog dialog = new FontDialog(guiFrame,"Choose text font.",true);
+        dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        dialog.setVisible(true);
+        if(!dialog.isCancelSelected()){
+            graphics.setFont(dialog.getSelectedFont());
+        }
+    }
+
     public void penDraw() {
         graphics.drawLine(point1.x, point1.y, point2.x, point2.y);
         repaint();
@@ -146,6 +156,18 @@ public class Canvas extends JPanel {
             graphics.fill(new Ellipse2D.Double(MBR.getMinX(), MBR.getMinY(), MBR.getWidth(), MBR.getWidth()));
         repaint();
         point2 = new Point(point1.x, point1.y);
+    }
+
+    public void createText() {
+        JTextArea txtArea = new JTextArea();
+        txtArea.setLineWrap(true);
+        txtArea.setWrapStyleWord(true);
+        String prompt = "Please add text to display.";
+        JOptionPane.showConfirmDialog(guiFrame, txtArea, prompt, JOptionPane.OK_CANCEL_OPTION);
+        int y = point1.y;
+        for (String line : txtArea.getText().split("\n"))
+            graphics.drawString(line, point1.x, y += graphics.getFontMetrics().getHeight());
+        repaint();
     }
 
     public void undo() {

@@ -21,6 +21,7 @@ public class PaintAppGUI extends JFrame {
     private JToggleButton textButton;
     private JToggleButton eraserButton;
     private JButton pickColorButton;
+    private JButton pickFontButton;
     private JSpinner lineWidthSpinner;
     private ButtonGroup buttonGroup;
 
@@ -32,7 +33,7 @@ public class PaintAppGUI extends JFrame {
 
         JButton[] buttons = new JButton[] {
                 newFileButton, saveButton, openButton, undoButton,
-                redoButton, clearButton, pickColorButton
+                redoButton, clearButton, pickColorButton, pickFontButton
         };
         JToggleButton[] toggleButtons = new JToggleButton[] {
                 penButton, lineButton, rectangleButton, circleButton,
@@ -112,6 +113,10 @@ public class PaintAppGUI extends JFrame {
 
     public JButton getPickColorButton() {
         return pickColorButton;
+    }
+
+    public JButton getPickFontButton() {
+        return pickFontButton;
     }
 
     public JPanel getColorPanel() {

@@ -39,6 +39,8 @@ public class ToolbarListener implements ActionListener, ChangeListener {
             canvas.setTool(Tools.Eraser);
         } else if (source == guiFrame.getPickColorButton()) {
             canvas.pickColor();
+        } else if (source == guiFrame.getPickFontButton()) {
+            canvas.pickFont();
         } else if (source == guiFrame.getUndoButton()) {
             canvas.undo();
         } else if (source == guiFrame.getRedoButton()) {

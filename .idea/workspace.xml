@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a547b47e-37fb-46ce-b627-80b5ce0c9132" name="Changes" comment="Add base Canvas, IOHandler methods">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="a547b47e-37fb-46ce-b627-80b5ce0c9132" name="Changes" comment="Add IO operations - new, open, save file; Add background">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/Canvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/IOHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/IOHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/CustomMouseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/CustomMouseListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/PaintAppGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/PaintAppGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/PaintAppGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/PaintAppGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/ToolbarListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/ToolbarListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +45,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "100",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "230",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "214",
     "WebServerToolWindowFactoryState": "false",
     "project.structure.last.edited": "Modules",
@@ -162,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678215749296</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Add IO operations - new, open, save file; Add background">
+      <created>1678278198199</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1678278198199</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +199,7 @@
     <MESSAGE value="Implement JToggleButton group for button selection animation; improve stroke and Eraser impl." />
     <MESSAGE value="Implement Line tool; add previewStack; add LineSegment Shape and restructurize project" />
     <MESSAGE value="Implement Rectangle, Ellipse, Circle tools; Fix some repainting issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement Rectangle, Ellipse, Circle tools; Fix some repainting issues" />
+    <MESSAGE value="Add IO operations - new, open, save file; Add background" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add IO operations - new, open, save file; Add background" />
   </component>
 </project>

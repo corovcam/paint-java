@@ -18,7 +18,7 @@ public class Canvas extends JPanel {
     private Graphics2D graphics;
     private Color color = Color.BLACK;
     private Tools selectedTool = Tools.Pen;
-    private Image image;
+    private Image image, bg;
     private final Stack<Shape> previewStack = new Stack<>();
     private final Stack<Image> undoStack = new Stack<>();
     private final Stack<Image> redoStack = new Stack<>();
@@ -34,7 +34,7 @@ public class Canvas extends JPanel {
         }
         g.drawImage(image, 0, 0, null);
 
-        Graphics2D graphics2D = (Graphics2D) g;
+        Graphics2D graphics2D = (Graphics2D)g;
         graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         if (!previewStack.isEmpty()) {
             Shape s = previewStack.pop();
@@ -61,6 +61,10 @@ public class Canvas extends JPanel {
         return selectedTool;
     }
 
+    public Image getCurrentImage() {
+        return image;
+    }
+
     public void setPoint1(Point point1) {
         this.point1 = point1;
     }
@@ -71,12 +75,8 @@ public class Canvas extends JPanel {
 
     public void setTool(Tools tool) {
         selectedTool = tool;
-        switch (tool) {
-            case Eraser -> {
-                setColor(Color.WHITE);
-            }
-            default -> {}
-        }
+        if (tool == Tools.Eraser)
+            setColor(Color.WHITE);
     }
 
     public void setColor(Color color) {
@@ -165,28 +165,39 @@ public class Canvas extends JPanel {
     }
 
     public void clear() {
-        graphics.setPaint(Color.white);
-        graphics.fillRect(0, 0, getSize().width, getSize().height);
-        graphics.setPaint(Color.black);
+        if (bg != null) {
+            setNewImage(copyImage(bg));
+        } else {
+            graphics.setPaint(Color.white);
+            graphics.fillRect(0, 0, getSize().width, getSize().height);
+            graphics.setPaint(Color.black);
+            repaint();
+        }
         guiFrame.getColorPanel().setBackground(Color.black);
         guiFrame.getPenButton().doClick();
-        this.color = Color.BLACK;
+        color = Color.BLACK;
         previewStack.clear();
-        repaint();
     }
 
-    private void setNewImage(Image img) {
-        this.image = img;
+    public void prepareNewFile() {
+        bg = null;
+        clear();
+        undoStack.clear();
+        redoStack.clear();
+    }
+
+    public void setNewImage(Image img) {
+        image = img;
         graphics = (Graphics2D)image.getGraphics();
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         graphics.setPaint(Color.black);
         repaint();
     }
 
-    /*public void setBackground(Image img) {
-        background = copyImage(img);
-        setImage(copyImage(img));
-    }*/
+    public void setNewBackgroundImage(Image img) {
+        bg = copyImage(img);
+        setNewImage(copyImage(img));
+    }
 
     private BufferedImage copyImage(Image img) {
         BufferedImage imageCopy = new BufferedImage(getSize().width, getSize().height, BufferedImage.TYPE_INT_RGB);

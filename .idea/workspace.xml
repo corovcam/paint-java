@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a547b47e-37fb-46ce-b627-80b5ce0c9132" name="Changes" comment="Implement Rectangle, Ellipse, Circle tools; Fix some repainting issues">
+    <list default="true" id="a547b47e-37fb-46ce-b627-80b5ce0c9132" name="Changes" comment="Add base Canvas, IOHandler methods">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/Canvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/CustomMouseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/CustomMouseListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/PaintAppGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/PaintAppGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/IOHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/IOHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,18 +38,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;247&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "100",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "214",
+    "WebServerToolWindowFactoryState": "false",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.corovcak.martin.java.paint" />
@@ -57,8 +58,10 @@
   </component>
   <component name="RunManager">
     <configuration name="Console Default" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-19" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.corovcak.martin.java.paint.PaintApp" />
-      <module name="paint" />
+      <module name="paint-java" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

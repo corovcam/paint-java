@@ -2,6 +2,7 @@ package com.corovcak.martin.java.paint;
 
 import com.corovcak.martin.java.paint.utils.Tools;
 
+import javax.swing.*;
 import javax.swing.event.MouseInputListener;
 import java.awt.event.MouseEvent;
 
@@ -14,17 +15,27 @@ public class CustomMouseListener implements MouseInputListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        System.out.println(e.getPoint());
         canvas.saveCurrentImageToStack();
         canvas.setPoint1(e.getPoint());
-        if (canvas.getSelectedTool() == Tools.Text) {
-            canvas.createText();
+        if (SwingUtilities.isLeftMouseButton(e)) {
+            if (canvas.getSelectedTool() == Tools.Text) {
+                canvas.createText();
+            } else if (canvas.getSelectedTool() == Tools.Polygon) {
+                canvas.createPolygonPoint();
+            }
+        } else if (SwingUtilities.isMiddleMouseButton(e)) {
+            if (canvas.getSelectedTool() == Tools.Polygon) {
+                canvas.resetPolygonPoints();
+            }
+        } else if (SwingUtilities.isRightMouseButton(e)) {
+            if (canvas.getSelectedTool() == Tools.Polygon) {
+                canvas.drawPolygon();
+            }
         }
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        System.out.println(e.getPoint());
         canvas.setPoint2(e.getPoint());
         switch (canvas.getSelectedTool()) {
             case Pen, Eraser -> canvas.penDraw();

@@ -10,6 +10,8 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class Canvas extends JPanel {
@@ -20,6 +22,8 @@ public class Canvas extends JPanel {
     private Color color = Color.BLACK;
     private Tools selectedTool = Tools.Pen;
     private Image image, bg;
+    private final List<Point> polygonPoints = new ArrayList<>();
+    private final Stack<Point> polygonPointsStack = new Stack<>();
     private final Stack<Shape> previewStack = new Stack<>();
     private final Stack<Image> undoStack = new Stack<>();
     private final Stack<Image> redoStack = new Stack<>();
@@ -45,6 +49,13 @@ public class Canvas extends JPanel {
                 graphics2D.draw(s);
             else
                 graphics2D.fill(s);
+        }
+        if (!polygonPoints.isEmpty()) {
+            graphics2D.setColor(color);
+            graphics2D.setStroke(graphics.getStroke());
+            for (var point : polygonPoints) {
+                graphics2D.fillOval(point.x, point.y, 5, 5);
+            }
         }
     }
 
@@ -76,8 +87,25 @@ public class Canvas extends JPanel {
 
     public void setTool(Tools tool) {
         selectedTool = tool;
-        if (tool == Tools.Eraser)
-            setColor(Color.WHITE);
+        switch (tool) {
+            case Polygon -> JOptionPane.showMessageDialog(
+                    guiFrame,
+                    """
+                            Left click on canvas to create a Polygon point.
+                            Right click to create Polygon.
+                            Middle click to cancel Polygon creation.""",
+                    "Polygon Instructions", JOptionPane.INFORMATION_MESSAGE
+            );
+            case Text -> JOptionPane.showMessageDialog(
+                    guiFrame,
+                    """
+                            Left click on canvas where you want to create Text.
+                            Write Text in text box and hit OK.""",
+                    "Text Instructions", JOptionPane.INFORMATION_MESSAGE
+            );
+            case Eraser -> setColor(Color.WHITE);
+        }
+        resetPolygonPoints();
     }
 
     public void setColor(Color color) {
@@ -158,6 +186,27 @@ public class Canvas extends JPanel {
         point2 = new Point(point1.x, point1.y);
     }
 
+    public void createPolygonPoint() {
+        polygonPoints.add(point1);
+        repaint();
+    }
+
+    public void drawPolygon() {
+        int[] xPoints = polygonPoints.stream().mapToInt(point -> point.x).toArray();
+        int[] yPoints = polygonPoints.stream().mapToInt(point -> point.y).toArray();
+        graphics.fillPolygon(xPoints, yPoints, polygonPoints.size());
+        polygonPoints.clear();
+        repaint();
+    }
+
+    public void resetPolygonPoints() {
+        if (!polygonPoints.isEmpty()) {
+            polygonPoints.clear();
+            polygonPointsStack.clear();
+            repaint();
+        }
+    }
+
     public void createText() {
         JTextArea txtArea = new JTextArea();
         txtArea.setLineWrap(true);
@@ -176,6 +225,11 @@ public class Canvas extends JPanel {
             redoStack.push(image);
             setNewImage(temp);
         }
+        if (!polygonPoints.isEmpty()) {
+            Point p = polygonPoints.remove(polygonPoints.size() - 1);
+            polygonPointsStack.push(p);
+            repaint();
+        }
     }
 
     public void redo() {
@@ -183,6 +237,11 @@ public class Canvas extends JPanel {
             Image temp = redoStack.pop();
             undoStack.push(image);
             setNewImage(temp);
+        }
+        if (!polygonPointsStack.isEmpty()) {
+            Point p = polygonPointsStack.pop();
+            polygonPoints.add(p);
+            repaint();
         }
     }
 
@@ -199,6 +258,7 @@ public class Canvas extends JPanel {
         guiFrame.getPenButton().doClick();
         color = Color.BLACK;
         previewStack.clear();
+        resetPolygonPoints();
     }
 
     public void prepareNewFile() {

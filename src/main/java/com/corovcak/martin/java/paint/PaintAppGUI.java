@@ -2,6 +2,9 @@ package com.corovcak.martin.java.paint;
 
 import javax.swing.*;
 
+/**
+ * GUI JFrame that contains all the buttons, panels and interactive components
+ */
 public class PaintAppGUI extends JFrame {
     private JPanel mainPanel;
     private JPanel drawPanel;
@@ -31,24 +34,32 @@ public class PaintAppGUI extends JFrame {
         ioHandler = new IOHandler(this);
         ToolbarListener toolbarListener = new ToolbarListener(this);
 
+        // Buttons with just clickable function
         JButton[] buttons = new JButton[] {
                 newFileButton, saveButton, openButton, undoButton,
                 redoButton, clearButton, pickColorButton, pickFontButton
         };
+        // Toggle buttons that stay looking "pressed" after click
         JToggleButton[] toggleButtons = new JToggleButton[] {
                 penButton, lineButton, rectangleButton, circleButton,
                 ellipseButton, polygonButton, textButton, eraserButton
         };
+        // Pen is always clicked from the start
         penButton.doClick();
+        // Add custom button listener
         for (var btn : buttons)
             btn.addActionListener(toolbarListener);
         for (var btn : toggleButtons) {
             btn.addActionListener(toolbarListener);
-            buttonGroup.add(btn);
+            buttonGroup.add(btn); // Add to Toggle ButtonGroup
         }
         lineWidthSpinner.addChangeListener(toolbarListener);
     }
 
+    /**
+     * Custom components definition (not supported by GUI Designer).
+     * The IDE will call this function when it needs to create the UI components.
+     */
     private void createUIComponents() {
         drawPanel = new Canvas(this);
         lineWidthSpinner = new JSpinner(new SpinnerNumberModel(1, 1, Integer.MAX_VALUE, 1));
@@ -59,10 +70,7 @@ public class PaintAppGUI extends JFrame {
         return mainPanel;
     }
 
-    public JPanel getDrawPanel() {
-        return drawPanel;
-    }
-
+    // Component Getters (we don't need to expose Component setters to other Classes)
     public AbstractButton getPenButton() {
         return penButton;
     }
@@ -135,6 +143,11 @@ public class PaintAppGUI extends JFrame {
         return lineWidthSpinner;
     }
 
+    /**
+     * This function returns a Canvas object that is the same as the drawPanel object.
+     *
+     * @return The Canvas object.
+     */
     public Canvas getCanvas() {
         return (Canvas)drawPanel;
     }

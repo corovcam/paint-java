@@ -4,6 +4,12 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
+/**
+ * Line2D Shape implementation that has two Point2D's specifying Line's endpoints.
+ * Also used for Rectangle/Ellipse drawing using {@code Line2D.getBounds2D()}.
+ *
+ * @see java.awt.geom.Line2D
+ */
 public class LineSegment extends Line2D {
     Point2D P1;
     Point2D P2;

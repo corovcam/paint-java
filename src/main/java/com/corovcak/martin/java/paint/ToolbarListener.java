@@ -8,6 +8,9 @@ import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Listens for events from all the Buttons, ToggleButtons, Spinner and performs the appropriate action
+ */
 public class ToolbarListener implements ActionListener, ChangeListener {
     private final PaintAppGUI guiFrame;
 
@@ -15,6 +18,11 @@ public class ToolbarListener implements ActionListener, ChangeListener {
         this.guiFrame = guiFrame;
     }
 
+    /**
+     * A method that is called when Button click event action is performed.
+     * Sets appropriate Active Tool or performs respective function.
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
@@ -58,6 +66,11 @@ public class ToolbarListener implements ActionListener, ChangeListener {
         }
     }
 
+    /**
+     * A method that is called when Spinner value change event action is performed.
+     * Sets chosen Line Width for "line" Tools to use.
+     * @param e  a ChangeEvent object
+     */
     @Override
     public void stateChanged(ChangeEvent e) {
         Object source = e.getSource();

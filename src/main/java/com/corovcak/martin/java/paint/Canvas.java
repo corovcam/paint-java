@@ -57,17 +57,18 @@ public class Canvas extends JPanel {
             setLineWidth(1);
             clear(); // Clear to set White Canvas background
         }
-        // Draws the current image onto whole Canvas
-        g.drawImage(image, 0, 0, null);
 
         // Create new Graphics2D component for next repaint
         Graphics2D graphics2D = (Graphics2D)g;
         graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        graphics2D.setColor(color);
+        graphics2D.setStroke(graphics.getStroke());
+        // Draws the current image onto whole Canvas
+        graphics2D.drawImage(image, 0, 0, null);
+
         // If there is some Shape to preview (Rectangle, Ellipse, Line)
         if (!previewStack.isEmpty()) {
             Shape s = previewStack.pop();
-            graphics2D.setColor(color);
-            graphics2D.setStroke(graphics.getStroke());
             if (selectedTool == Tools.Line)
                 graphics2D.draw(s); // Line cannot be called with "fill"
             else
@@ -75,8 +76,6 @@ public class Canvas extends JPanel {
         }
         // Repaint all Polygon "preview" points each repaint
         if (!polygonPoints.isEmpty()) {
-            graphics2D.setColor(color);
-            graphics2D.setStroke(graphics.getStroke());
             for (var point : polygonPoints) {
                 graphics2D.fillOval(point.x, point.y, 5, 5);
             }
@@ -159,6 +158,7 @@ public class Canvas extends JPanel {
                     "Text Instructions", JOptionPane.INFORMATION_MESSAGE
             );
             case Eraser -> setColor(Color.WHITE);
+            default -> {}
         }
         // Reset Polygon points if user clicks on different Tool button during Polygon creation
         resetPolygonPoints();
@@ -417,9 +417,11 @@ public class Canvas extends JPanel {
      */
     public void setNewImage(Image img) {
         image = img;
+        Stroke stroke = graphics.getStroke();
         graphics = (Graphics2D)image.getGraphics();
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        graphics.setPaint(Color.black);
+        graphics.setPaint(color);
+        graphics.setStroke(stroke);
         repaint();
     }
 

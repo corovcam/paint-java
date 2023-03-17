@@ -15,6 +15,13 @@
     </properties>
 
     <dependencies>
+        <!-- IntelliJ IDEA GUIDesigner .jar: https://mvnrepository.com/artifact/com.intellij/forms_rt -->
+        <dependency>
+            <groupId>com.intellij</groupId>
+            <artifactId>forms_rt</artifactId>
+            <version>7.0.3</version>
+        </dependency>
+
         <!--We use custom org.drjekyll.fontchooser.FontDialog (font chooser window dialog) dependency to allow user
         to choose desired font in the GUI.-->
         <dependency>

@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a547b47e-37fb-46ce-b627-80b5ce0c9132" name="Changes" comment="Add comments, javaDoc and update README.md with User Documentation">
+    <list default="true" id="a547b47e-37fb-46ce-b627-80b5ce0c9132" name="Changes" comment="Hotfix: Undo set default color/stroke">
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/Canvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/PaintAppGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/corovcak/martin/java/paint/PaintAppGUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,21 +38,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH&quot;: &quot;230&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;214&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Univerzita/Java/paint/example-gui.png&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.3091954&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "230",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "214",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Univerzita/Java/paint/example-gui.png",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.3091954",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "project.propGUI"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Univerzita\Java\paint\images" />
@@ -89,7 +91,8 @@
       <workItem from="1678202293743" duration="17266000" />
       <workItem from="1678575936061" duration="1217000" />
       <workItem from="1678702003493" duration="22460000" />
-      <workItem from="1678802976694" duration="2401000" />
+      <workItem from="1678802976694" duration="2793000" />
+      <workItem from="1679047297928" duration="2285000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1676042054468</created>
@@ -189,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678734130594</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Hotfix: Undo set default color/stroke">
+      <created>1678807797662</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1678807797662</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,6 +240,7 @@
     <MESSAGE value="Add IO operations - new, open, save file; Add background" />
     <MESSAGE value="Implement Polygon tool; rewrite MouseListener buttons; Add Info messages" />
     <MESSAGE value="Add comments, javaDoc and update README.md with User Documentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add comments, javaDoc and update README.md with User Documentation" />
+    <MESSAGE value="Hotfix: Undo set default color/stroke" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hotfix: Undo set default color/stroke" />
   </component>
 </project>

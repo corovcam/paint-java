@@ -12,6 +12,7 @@ Java Programming class.
   - Swing
   - AWT
   - org.drjekyll.fontchooser (FontDialog class)
+  - com.jetbrains.intellij.java.java-gui-forms-rt (GUIDesigner dependency to build executable)
 
 ![](images/example-gui.png "Example GUI")
 
@@ -19,8 +20,18 @@ Java Programming class.
 1. Clone the repository.
 2. The GUI has been created using GUIDesigner utility inside JetBrains IntelliJ IDEA IDE. If you want to use the 
     GUIDesigner to edit GUI, then you must use this IDE.
-3. Install dependencies using Maven install script.
-4. Build & run the GUI application.
+3. Compile & Install project using:
+    ```bash
+   mvn clean
+   mvn install -U
+   ```
+4. Build & run the GUI application:
+    - If IntelliJ IDEA is used: Build & Run using IDE tools.
+    - If Maven is used:
+        1. Navigate to *./target*
+        2. Run `java -jar paint-1.0-jar-with-dependencies.jar`
+
+*NOTE:* Generated *./target/classes/* don't include dependencies. 
 
 ## Main GUI
 The GUI contains buttons and settings panels with the most important part being the white Canvas frame in the middle.
